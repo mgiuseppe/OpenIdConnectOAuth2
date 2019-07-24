@@ -26,7 +26,9 @@ namespace MG_IdentityProvider
                         new Claim("given_name", "Giuseppe"),
                         new Claim("family_name", "Underwood"),
                         new Claim("address", "tree road 52"),
-                        new Claim("role", "FreeUser")
+                        new Claim("role", "FreeUser"),
+                        new Claim("subscriptionLevel", "FreeUser"),
+                        new Claim("country", "it")
                     }
                 },
                 new TestUser
@@ -40,7 +42,9 @@ namespace MG_IdentityProvider
                         new Claim("given_name", "Giancarlo"),
                         new Claim("family_name", "Underwood"),
                         new Claim("address", "tree road 42"),
-                        new Claim("role", "PayingUser")
+                        new Claim("role", "PayingUser"),
+                        new Claim("subscriptionLevel", "PayingUser"),
+                        new Claim("country", "be")
                     }
                 },
             };
@@ -57,7 +61,15 @@ namespace MG_IdentityProvider
                 new IdentityResource(
                     "roles",            //scope name
                     "Your role(s)",     //display name shown to the user when asking consent
-                    new[] { "role" })   //claim types tied to the scope
+                    new[] { "role" }),  //claim types tied to the scope
+                new IdentityResource(
+                    "country",
+                    "The country you're living in",
+                    new[] { "country" }),
+                new IdentityResource(
+                    "subscriptionLevel",
+                    "Your subscription level",
+                    new[] { "subscriptionLevel" })
             };
         }
 
@@ -94,7 +106,9 @@ namespace MG_IdentityProvider
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Address,
                         "roles",
-                        "imagegalleryapi"
+                        "imagegalleryapi",
+                        "country",
+                        "subscriptionLevel"
                     },
                     ClientSecrets =
                     {

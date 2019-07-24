@@ -31,6 +31,17 @@ namespace ImageGallery.Client
             // Add framework services.
             services.AddMvc();
 
+            //Authorization policies
+            services.AddAuthorization(authorizationOptions =>
+            {
+                authorizationOptions.AddPolicy("CanOrderFrame", policyBuilder =>
+                {
+                    policyBuilder.RequireAuthenticatedUser();
+                    policyBuilder.RequireClaim("country", "be", "en", "us"); //any of these
+                    policyBuilder.RequireClaim("subscriptionLevel", "PayingUser");
+                });
+            });
+
             // register an IHttpContextAccessor so we can access the current
             // HttpContext in services by injecting it
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -59,6 +70,8 @@ namespace ImageGallery.Client
                 options.Scope.Add("profile");
                 options.Scope.Add("address");
                 options.Scope.Add("roles");
+                options.Scope.Add("country");
+                options.Scope.Add("subscriptionLevel");
                 options.Scope.Add("imagegalleryapi");
                 options.SaveTokens = true;
                 options.GetClaimsFromUserInfoEndpoint = true;
@@ -66,7 +79,9 @@ namespace ImageGallery.Client
                 options.ClaimActions.DeleteClaim("sid"); //filter out the sid claim
                 options.ClaimActions.DeleteClaim("idp");
                 options.ClaimActions.MapUniqueJsonKey("role", "role");
-                
+                options.ClaimActions.MapUniqueJsonKey("country", "country");
+                options.ClaimActions.MapUniqueJsonKey("subscriptionLevel", "subscriptionLevel");
+
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     NameClaimType = JwtClaimTypes.GivenName,

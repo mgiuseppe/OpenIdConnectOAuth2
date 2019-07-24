@@ -1,6 +1,8 @@
 ﻿using IdentityServer4.AccessTokenValidation;
+using ImageGallery.API.Authorization;
 using ImageGallery.API.Entities;
 using ImageGallery.API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -25,6 +27,19 @@ namespace ImageGallery.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            //policies
+            services.AddAuthorization(authorizationOptions =>
+            {
+                authorizationOptions.AddPolicy("MustOwnImage", policyBuilder =>
+                {
+                    policyBuilder.RequireAuthenticatedUser();
+                    policyBuilder.AddRequirements(new MustOwnImageRequirement());
+                });
+            });
+
+            //custom requirement handler
+            services.AddScoped<IAuthorizationHandler, MustOwnImageHandler>();
 
             services
                 .AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme) //bearer
