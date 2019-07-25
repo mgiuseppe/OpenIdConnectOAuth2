@@ -92,6 +92,11 @@ namespace MG_IdentityProvider
                     ClientName = "Image Gallery",
                     ClientId = "imagegalleryclient",
                     AllowedGrantTypes = GrantTypes.Hybrid,
+                    //IdentityTokenLifetime = 300, //in secs - default 5min
+                    //AuthorizationCodeLifetime = 300, //in secs - default 5min
+                    AccessTokenLifetime = 120, //in secs - default 1h
+                    AllowOfflineAccess = true,
+                    UpdateAccessTokenClaimsOnRefresh = true,
                     RedirectUris = new List<string>
                     {
                         "https://localhost:44356/signin-oidc"

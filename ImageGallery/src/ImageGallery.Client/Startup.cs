@@ -73,6 +73,7 @@ namespace ImageGallery.Client
                 options.Scope.Add("country");
                 options.Scope.Add("subscriptionLevel");
                 options.Scope.Add("imagegalleryapi");
+                options.Scope.Add("offline_access");
                 options.SaveTokens = true;
                 options.GetClaimsFromUserInfoEndpoint = true;
                 options.ClaimActions.Remove("amr"); //remove the claim action that filter out the amr claim
