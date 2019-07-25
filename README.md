@@ -36,3 +36,11 @@ Happy coding! :)
    - Refresh token
    - Reference token and revocation endpoint (see the branch "reference tokens")
    
+# Todo
+- Sub-Divide Api into multiple scopes 
+    http://docs.identityserver.io/en/latest/topics/apis.html#validating-scopes
+- Adding support for external authentication (third-party providers)
+    http://docs.identityserver.io/en/latest/quickstarts/4_external_authentication.html
+    when you add support for external authentication you should map the external user to a local user the first time he logs in.
+    for further info read the note in the link.
+    
