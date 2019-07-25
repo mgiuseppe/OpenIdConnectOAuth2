@@ -81,6 +81,9 @@ namespace MG_IdentityProvider
                     "imagegalleryapi", // scope name 
                     "Image Gallery API", // display name  
                     new[] { "role" }) // claim types to add to the access token
+                {
+                    ApiSecrets = { new Secret("apisecret".Sha256()) }
+                }
             };
         }
 
@@ -92,6 +95,7 @@ namespace MG_IdentityProvider
                     ClientName = "Image Gallery",
                     ClientId = "imagegalleryclient",
                     AllowedGrantTypes = GrantTypes.Hybrid,
+                    AccessTokenType = AccessTokenType.Reference,
                     //IdentityTokenLifetime = 300, //in secs - default 5min
                     //AuthorizationCodeLifetime = 300, //in secs - default 5min
                     AccessTokenLifetime = 120, //in secs - default 1h
