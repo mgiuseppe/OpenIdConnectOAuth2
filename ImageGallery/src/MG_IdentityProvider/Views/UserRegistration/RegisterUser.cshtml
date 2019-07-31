@@ -21,8 +21,8 @@
                                 <label asp-for="UserName"></label>
                                 <input class="form-control" placeholder="UserName" asp-for="UserName" autofocus />
                             </div>
-                            @if(!Model.IsProvisioningFromExternal)
-                            { 
+                            @if (!Model.IsProvisioningFromExternal)
+                            {
                                 <div class="form-group">
                                     <label asp-for="Password"></label>
                                     <input class="form-control" placeholder="Password" asp-for="Password" autocomplete="off" />
@@ -48,8 +48,10 @@
                                 <label asp-for="Country"></label>
                                 <select class="form-control" asp-for="Country" asp-items="@Model.CountryCodes"></select>
                             </div>
+                            <div class="form-group">
+                                <input class="btn btn-primary" type="submit" />
+                            </div>
                         </fieldset>
-                        <input class="btn btn-primary" type="submit" />
                     </form>
                 </div>
             </div>

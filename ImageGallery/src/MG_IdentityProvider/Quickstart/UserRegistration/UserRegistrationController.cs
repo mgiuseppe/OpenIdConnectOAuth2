@@ -22,6 +22,7 @@ namespace MG_IdentityProvider.Quickstart.UserRegistration
             _interaction = interaction;
         }
 
+        [HttpGet]
         public IActionResult RegisterUser(RegistrationInputModel registrationInputModel)
         {
             var vm = new RegisterUserViewModel()

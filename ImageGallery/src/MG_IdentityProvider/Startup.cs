@@ -47,19 +47,10 @@ namespace MG_IdentityProvider
                     options.ClientId = "272433830027-keh9juh59oq6k51dd0ved6a0jlaqslpv.apps.googleusercontent.com";
                     options.ClientSecret = "MR4nmb_lL0lAK0SJ4HOOudYY";
                 });
-
-            //seed db
-            using (var provider = services.BuildServiceProvider())
-            {
-                var ctx = provider.GetService<MGUserContext>();
-                var passwordHasher = provider.GetService<IPasswordHasher>();
-                ctx.Database.Migrate();
-                ctx.EnsureSeedDataForContext(passwordHasher);
-            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, MGUserContext ctx, IPasswordHasher passwordHasher)
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
@@ -68,6 +59,13 @@ namespace MG_IdentityProvider
 
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
+
+            //seed db
+            if (env.IsDevelopment())
+            {
+                ctx.Database.Migrate();
+                ctx.EnsureSeedDataForContext(passwordHasher);
+            }       
         }
     }
 }
