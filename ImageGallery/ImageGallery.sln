@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageGallery.API", "src\Ima
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageGallery.Model", "src\ImageGallery.Model\ImageGallery.Model.csproj", "{226B95C9-A9A6-4DF7-992C-A5945AF3AF0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MG_IdentityProvider", "src\MG_IdentityProvider\MG_IdentityProvider.csproj", "{0EDC4A97-A7CA-49E4-8A04-5D8EF29568C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MG_IdentityProvider", "src\MG_IdentityProvider\MG_IdentityProvider.csproj", "{0EDC4A97-A7CA-49E4-8A04-5D8EF29568C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

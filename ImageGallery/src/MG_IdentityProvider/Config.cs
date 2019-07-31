@@ -11,45 +11,6 @@ namespace MG_IdentityProvider
 {
     public static class Config
     {
-        public static List<TestUser> GetUsers()
-        {
-            return new List<TestUser>
-            {
-                new TestUser
-                {
-                    SubjectId = "d860efca-22d9-47fd-8249-791ba61b07c7",
-                    Username = "Giuseppe",
-                    Password = "password",
-
-                    Claims = new List<Claim>
-                    {
-                        new Claim("given_name", "Giuseppe"),
-                        new Claim("family_name", "Underwood"),
-                        new Claim("address", "tree road 52"),
-                        new Claim("role", "FreeUser"),
-                        new Claim("subscriptionLevel", "FreeUser"),
-                        new Claim("country", "it")
-                    }
-                },
-                new TestUser
-                {
-                    SubjectId = "b7539694-97e7-4dfe-84da-b4256e1ff5c7",
-                    Username = "Giancarlo",
-                    Password = "password",
-                    
-                    Claims = new List<Claim>
-                    {
-                        new Claim("given_name", "Giancarlo"),
-                        new Claim("family_name", "Underwood"),
-                        new Claim("address", "tree road 42"),
-                        new Claim("role", "PayingUser"),
-                        new Claim("subscriptionLevel", "PayingUser"),
-                        new Claim("country", "be")
-                    }
-                },
-            };
-        }
-
         // identity-related resources (scopes)
         public static List<IdentityResource> GetIdentityResources()
         {
